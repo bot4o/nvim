@@ -1,5 +1,5 @@
 -- Clear guicursor
-vim.opt.guicursor = ""
+--vim.opt.guicursor = ""
 
 -- Line numbering settings
 vim.opt.nu = true
