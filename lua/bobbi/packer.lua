@@ -43,11 +43,8 @@ return require('packer').startup(function(use)
     use("tpope/vim-fugitive")
     use {
         'nvim-lualine/lualine.nvim',
-<<<<<<< HEAD
-        requires = { 'kyazdani42/nvim-web-devicons'}
-=======
+        requires = { 'kyazdani42/nvim-web-devicons'},
         requires = { 'nvim-tree/nvim-web-devicons'}
->>>>>>> 03d7a6b337d28da70982073be24b61ac007698d5
     }
     use('jlcrochet/vim-razor')
     --lsp

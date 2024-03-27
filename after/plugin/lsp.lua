@@ -21,11 +21,6 @@ cmp.setup({
         ['<C-p>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
         ['<C-n>'] = cmp.mapping.select_next_item({behavior = 'select'}),
     },
-    snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end,
-    },
     formatting = cmp_format,
 })
 
@@ -64,6 +59,16 @@ require('mason-lspconfig').setup({
     ensure_installed = {'tsserver', 'csharp_ls', 'html', 'tailwindcss', 'jsonls'},
     handlers = {
         lsp_zero.default_setup,
+    },
+})
+
+require('lspconfig').csharp_ls.setup{
+    on_attach = on_attach
+}
+vim.diagnostic.config({
+    virtual_text = true
+})
+--[[
         tsserver = function()
             require('lspconfig').tsserver.setup({
                 on_init = function(client)
@@ -80,9 +85,4 @@ require('mason-lspconfig').setup({
                 ---
             })
         end,
-    },
-})
-
-vim.diagnostic.config({
-    virtual_text = true
-})
+        --]]
