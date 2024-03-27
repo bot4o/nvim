@@ -126,13 +126,10 @@ _G.packer_plugins = {
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-<<<<<<< HEAD
     path = "C:\\Users\\bobbi\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
-=======
+    url = "https://github.com/kyazdani42/nvim-web-devicons",
     path = "C:\\Users\\boeva\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
->>>>>>> 03d7a6b337d28da70982073be24b61ac007698d5
   },
   ["packer.nvim"] = {
     loaded = true,
