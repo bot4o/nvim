@@ -2,24 +2,44 @@ local lsp_zero = require('lsp-zero')
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
-  
+local cmp_format = require('lsp-zero').cmp_format({details = true})
+
+local cmp = require('cmp')
+
 cmp.setup({
-    preselect = 'item',
-    completion = {
-        completeopt = 'menu,menuone,noinsert'
-    },
     sources = {
         {name = 'nvim_lsp'},
-        {name = 'nvim_lua'},
         {name = 'buffer'},
+        {name = 'luasnip'},
     },
-    mapping = cmp.mapping.preset.insert{
-        ["<C-Space>"] = cmp.mapping.complete(),
-        --true
-        --['<CR>'] = cmp.mapping.confirm({select = false}),
-        ['<Tab>'] = cmp.mapping.confirm({select = false}),
-        ['<C-p>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
-        ['<C-n>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+    mapping = {
+        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+        ['<CR>'] = cmp.mapping.confirm({select = true}),
+        ['<Tab>'] = cmp_action.luasnip_supertab(),
+        ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<Up>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
+        ['<Down>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+        ['<C-p>'] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_prev_item({behavior = 'insert'})
+            else
+                cmp.complete()
+            end
+        end),
+        ['<C-n>'] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_next_item({behavior = 'insert'})
+            else
+                cmp.complete()
+            end
+        end),
+    },
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
     },
     formatting = cmp_format,
 })
@@ -69,20 +89,20 @@ vim.diagnostic.config({
     virtual_text = true
 })
 --[[
-        tsserver = function()
-            require('lspconfig').tsserver.setup({
-                on_init = function(client)
-                    client.server_capabilities.semanticTokensProvider = nil
-                end,
-            })
+tsserver = function()
+    require('lspconfig').tsserver.setup({
+        on_init = function(client)
+            client.server_capabilities.semanticTokensProvider = nil
         end,
-        --- replace `example_server` with the name of a language server
-        csharp_ls = function()
-            require('lspconfig').csharp_ls.setup({
-                ---
-                -- in here you can add your own
-                -- custom configuration
-                ---
-            })
-        end,
-        --]]
+    })
+end,
+--- replace `example_server` with the name of a language server
+csharp_ls = function()
+    require('lspconfig').csharp_ls.setup({
+        ---
+        -- in here you can add your own
+        -- custom configuration
+        ---
+    })
+end,
+--]]
