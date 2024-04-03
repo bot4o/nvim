@@ -84,6 +84,14 @@ _G.packer_plugins = {
     path = "C:\\Users\\bobbi\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["dashboard-nvim"] = {
+    config = { "\27LJ\2\n�\24\0\0\6\0\23\0%6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\0016\0\0\0009\0\1\0'\2\4\0B\0\2\0016\0\5\0'\2\6\0B\0\2\0029\0\a\0005\2\21\0005\3\t\0005\4\b\0=\4\n\0034\4\0\0=\4\v\0035\4\f\0=\4\r\0035\4\14\0=\4\15\0035\4\16\0=\4\17\0034\4\3\0005\5\18\0>\5\1\0045\5\19\0>\5\2\4=\4\20\3=\3\22\2B\0\2\1K\0\1\0\vconfig\1\0\0\rshortcut\1\0\4\vaction\26Telescope grep_string\bkey\6g\tdesc\r Grep\ngroup\14@property\1\0\5\ngroup\14@property\bkey\6f\tdesc\nFiles\ticon\t \vaction\25Telescope find_files\bmru\1\0\1\nlimit\3\5\fproject\1\0\1\venable\1\rpackages\1\0\1\venable\1\vfooter\vheader\1\0\0\1\27\0\0i                                                                                                    i                                                                                                    i                                                                                                    i                         .^!^                                           .!~:                        i                    ^!JPB&B7.                                            !&&BPJ!:                   i                ^?P#@@@@@G.                   :       :                   ~@@@@@&B5!:               i             ^JB@@@@@@@@@7                   .#~     ?G                   .&@@@@@@@@&G?:            i          .7G@@@@@@@@@@@@#!                  7@&^   ~@@^                 .5@@@@@@@@@@@@@G7.         i        .?#@@@@@@@@@@@@@@@@BY!^.             B@@&BBB&@@Y              :~Y#@@@@@@@@@@@@@@@@#?.       i       !#@@@@@@@@@@@@@@@@@@@@@@#G5Y?!~^:..  ~@@@@@@@@@@#.   ..::^!7J5B&@@@@@@@@@@@@@@@@@@@@@#!      i     .5@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&&##B#@@@@@@@@@@@BBBB##&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Y     i    :B@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@5    i   .B@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@J   i   5@&#BGGPPPPPGGB&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&BGGP555PPGBB#&#:  i   ^:.            .^!YB@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&57^.            .:^.  i                       ~G@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@5:                      i                         P@@@#BGGGGB#@@@@@@@@@@@@@@@@@@@@@@@@@#BP5555PG#@@@P                        i                         :J!:.      .^!JG&@@@@@@@@@@@@@@@@#57^.        .:!5~                        i                                         :?G@@@@@@@@@@@@P!.                                         i                                            ~5@@@@@@@@5^                                            i                                              ^P@@@@G^                                              i                                                !#@?                                                i                                                 :^                                                 i                                                                                                    i                                                                                                    i                                                                                                    \nsetup\14dashboard\frequire7highlight DashboardHeader guifg=#F6C177 guibg=NONE*highlight link DashboardHeader Normal2syntax match DashboardHeader /^.*$/ contained\bcmd\bvim\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "C:\\Users\\bobbi\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\dashboard-nvim",
+    url = "https://github.com/nvimdev/dashboard-nvim"
+  },
   harpoon = {
     loaded = true,
     path = "C:\\Users\\bobbi\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\harpoon",
@@ -187,6 +195,13 @@ time([[Config for trouble.nvim]], false)
 time([[Config for rose-pine]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
 time([[Config for rose-pine]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'dashboard-nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
