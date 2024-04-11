@@ -15,9 +15,7 @@ cmp.setup({
     mapping = {
         ['<C-f>'] = cmp_action.luasnip_jump_forward(),
         ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-        ['<CR>'] = cmp.mapping.confirm({select = true}),
-        ['<Tab>'] = cmp_action.luasnip_supertab(),
-        ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+        ['<Tab>'] = cmp.mapping.confirm({select = true}),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<Up>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
         ['<Down>'] = cmp.mapping.select_next_item({behavior = 'select'}),
@@ -43,6 +41,7 @@ cmp.setup({
     },
     formatting = cmp_format,
 })
+
 
 lsp_zero.on_attach(function(client, bufnr)
     lsp_zero.default_keymaps({
@@ -73,13 +72,23 @@ lsp_zero.set_sign_icons({
     hint = '⚑',
     info = '»'
 })
-
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = {'tsserver', 'csharp_ls', 'html', 'tailwindcss', 'jsonls'},
-    handlers = {
-        lsp_zero.default_setup,
-    },
+    ensure_installed = {'tsserver', 'html', 'tailwindcss', 'jsonls'},
+    omnisharp = function()
+        lspconfig.omnisharp.setup({
+            handlers = { ['textDocument/definition'] = require('omnisharp_extended').handler }
+
+        })
+    end,
+    tailwindcss = function()
+        lspconfig.tailwindcss.setup({
+            single_file_support = false,
+            on_attach = function(client, bufnr)
+                print('hello tailwindcss')
+            end
+        })
+    end
 })
 
 require('lspconfig').csharp_ls.setup{
@@ -88,21 +97,3 @@ require('lspconfig').csharp_ls.setup{
 vim.diagnostic.config({
     virtual_text = true
 })
---[[
-tsserver = function()
-    require('lspconfig').tsserver.setup({
-        on_init = function(client)
-            client.server_capabilities.semanticTokensProvider = nil
-        end,
-    })
-end,
---- replace `example_server` with the name of a language server
-csharp_ls = function()
-    require('lspconfig').csharp_ls.setup({
-        ---
-        -- in here you can add your own
-        -- custom configuration
-        ---
-    })
-end,
---]]
