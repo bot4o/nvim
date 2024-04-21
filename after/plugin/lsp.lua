@@ -74,21 +74,10 @@ lsp_zero.set_sign_icons({
 })
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = {'tsserver', 'html', 'tailwindcss', 'jsonls'},
-    omnisharp = function()
-        lspconfig.omnisharp.setup({
-            handlers = { ['textDocument/definition'] = require('omnisharp_extended').handler }
-
-        })
-    end,
-    tailwindcss = function()
-        lspconfig.tailwindcss.setup({
-            single_file_support = false,
-            on_attach = function(client, bufnr)
-                print('hello tailwindcss')
-            end
-        })
-    end
+    ensure_installed = {'tsserver', 'csharp_ls', 'html', 'tailwindcss', 'jsonls'},
+    handlers = {
+        lsp_zero.default_setup,
+    },
 })
 
 require('lspconfig').csharp_ls.setup{
