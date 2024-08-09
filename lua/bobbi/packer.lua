@@ -4,7 +4,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     --Telescope
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+        'nvim-telescope/telescope.nvim', tag = '0.1.8',
         -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
@@ -47,4 +47,42 @@ return require('packer').startup(function(use)
     use('Hoffs/omnisharp-extended-lsp.nvim')
     use('jiangmiao/auto-pairs')
     use('BurntSushi/ripgrep');
+    use {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                theme = 'hyper',
+                config = {
+                    week_header = {
+                        enable = true,
+                    },
+                    shortcut = {
+                        { desc = '󰊳 Update', group = '@property', action = 'Packer update', key = 'u' },
+                        {
+                            icon = ' ',
+                            icon_hl = '@variable',
+                            desc = 'Files',
+                            group = 'Label',
+                            action = 'Telescope find_files',
+                            key = 'f',
+                        },
+                        {
+                            desc = ' Apps',
+                            group = 'DiagnosticHint',
+                            action = 'Telescope app',
+                            key = 'a',
+                        },
+                        {
+                            desc = ' dotfiles',
+                            group = 'Number',
+                            action = 'Telescope dotfiles',
+                            key = 'd',
+                        },
+                    },
+                },
+            }
+        end,
+        requires = {'nvim-tree/nvim-web-devicons'}
+    }
 end)
