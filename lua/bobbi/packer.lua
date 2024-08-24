@@ -9,6 +9,7 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     --RosePine ColorScheme
+    --[[
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -16,6 +17,8 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme rose-pine')
         end
     })
+    --]]
+    use { "ellisonleao/gruvbox.nvim" }
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use("theprimeagen/harpoon")
     use("theprimeagen/refactoring.nvim")
@@ -54,30 +57,54 @@ return require('packer').startup(function(use)
             require('dashboard').setup {
                 theme = 'hyper',
                 config = {
-                    week_header = {
-                        enable = true,
+                    header = {
+                        "                                                                       ",
+                        "                                                                       ",
+                        "                                                                       ",
+                        "                                                                       ",
+                        "                                                                     ",
+                        "       ████ ██████           █████      ██                     ",
+                        "      ███████████             █████                             ",
+                        "      █████████ ███████████████████ ███   ███████████   ",
+                        "     █████████  ███    █████████████ █████ ██████████████   ",
+                        "    █████████ ██████████ █████████ █████ █████ ████ █████   ",
+                        "  ███████████ ███    ███ █████████ █████ █████ ████ █████  ",
+                        " ██████  █████████████████████ ████ █████ █████ ████ ██████ ",
+                        "                                                                       ",
+                        "                                                                       ",
+                        "                                                                       ",
                     },
                     shortcut = {
-                        { desc = '󰊳 Update', group = '@property', action = 'Packer update', key = 'u' },
+                        { 
+                            desc = '󰊳 Update', 
+                            group = 'Identifier', 
+                            action = 'Telescope find_files cwd=~/.config/nvim', 
+                            key = 'u' 
+                        },
                         {
-                            icon = ' ',
-                            icon_hl = '@variable',
-                            desc = 'Files',
+                            desc = '󰈔 New File',
                             group = 'Label',
+                            action = 'enew',  
+                            key = 'n',
+                        },
+                        {
+                            icon = ' ',
+                            desc = 'Files',
+                            group = 'String',
                             action = 'Telescope find_files',
                             key = 'f',
                         },
                         {
-                            desc = ' Apps',
-                            group = 'DiagnosticHint',
-                            action = 'Telescope app',
-                            key = 'a',
+                            desc = '󱎸 Find Text',
+                            group = 'String',
+                            action = 'Telescope live_grep',  
+                            key = 'g',
                         },
                         {
-                            desc = ' dotfiles',
-                            group = 'Number',
-                            action = 'Telescope dotfiles',
-                            key = 'd',
+                            desc = '󱎘 Quit',
+                            group = 'Error',
+                            action = 'qa',  
+                            key = 'q',
                         },
                     },
                 },
