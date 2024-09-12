@@ -48,8 +48,8 @@ return require('packer').startup(function(use)
         }
     }
     use('Hoffs/omnisharp-extended-lsp.nvim')
-    use('jiangmiao/auto-pairs')
-    use('BurntSushi/ripgrep');
+    --use('jiangmiao/auto-pairs')
+    use('BurntSushi/ripgrep')
     use {
         'nvimdev/dashboard-nvim',
         event = 'VimEnter',
