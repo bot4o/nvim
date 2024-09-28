@@ -4,7 +4,6 @@ require("bobbi.set")
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
@@ -41,4 +40,8 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {'nvim-tree'}
 }
+
+vim.opt.encoding = 'utf-8'
+vim.lsp.handlers["textDocument/references"] = function() end
+vim.lsp.set_log_level("debug")
 

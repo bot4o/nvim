@@ -1,4 +1,5 @@
 vim.cmd.packadd('packer.nvim')
+
 --Packer.Nvim
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
@@ -18,7 +19,21 @@ return require('packer').startup(function(use)
         end
     })
     --]]
-    use { "ellisonleao/gruvbox.nvim" }
+    --GruvBox
+    --use { "ellisonleao/gruvbox.nvim" }
+    --EverForest
+    --[[
+    use({
+        "neanias/everforest-nvim",
+        -- Optional; default configuration will be used if setup isn't called.
+        config = function()
+            require("everforest").setup()
+        end,
+    })
+    --]]
+    --AtomOne
+    -- Using Packer
+    use 'navarasu/onedark.nvim'
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use("theprimeagen/harpoon")
     use("theprimeagen/refactoring.nvim")
