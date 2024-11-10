@@ -10,7 +10,6 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     --RosePine ColorScheme
-    --[[
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -18,7 +17,6 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme rose-pine')
         end
     })
-    --]]
     --GruvBox
     --use { "ellisonleao/gruvbox.nvim" }
     --EverForest
@@ -32,8 +30,9 @@ return require('packer').startup(function(use)
     })
     --]]
     --AtomOne
-    -- Using Packer
+    --[[
     use 'navarasu/onedark.nvim'
+    --]]
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use("theprimeagen/harpoon")
     use("theprimeagen/refactoring.nvim")
