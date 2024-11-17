@@ -74,7 +74,7 @@ lsp_zero.set_sign_icons({
 })
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = {'csharp_ls', 'html', 'tailwindcss', 'jsonls'},
+    ensure_installed = {'csharp_ls', 'emmet_language_server' ,'clangd', 'html', 'tailwindcss', 'jsonls'},
     handlers = {
         lsp_zero.default_setup,
     },
