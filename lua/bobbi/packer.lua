@@ -10,6 +10,7 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     --RosePine ColorScheme
+    --[[
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -17,8 +18,9 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme rose-pine')
         end
     })
+    --]]
     --GruvBox
-    --use { "ellisonleao/gruvbox.nvim" }
+    use { "ellisonleao/gruvbox.nvim" }
     --EverForest
     --[[
     use({
