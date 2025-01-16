@@ -85,17 +85,12 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["dashboard-nvim"] = {
-    config = { "\27LJ\2\n�\17\0\0\6\0\14\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0034\4\6\0005\5\a\0>\5\1\0045\5\b\0>\5\2\0045\5\t\0>\5\3\0045\5\n\0>\5\4\0045\5\v\0>\5\5\4=\4\f\3=\3\r\2B\0\2\1K\0\1\0\vconfig\rshortcut\1\0\4\vaction\aqa\tdesc\14󱎘 Quit\bkey\6q\ngroup\nError\1\0\4\vaction\24Telescope live_grep\tdesc\19󱎸 Find Text\bkey\6g\ngroup\vString\1\0\5\vaction\25Telescope find_files\bkey\6f\ticon\t \tdesc\nFiles\ngroup\vString\1\0\4\vaction\tenew\tdesc\18󰈔 New File\bkey\6n\ngroup\nLabel\1\0\4\vaction,Telescope find_files cwd=~/.config/nvim\tdesc\16󰊳 Update\bkey\6u\ngroup\15Identifier\vheader\1\0\2\rshortcut\0\vheader\0\1\16\0\0L                                                                       L                                                                       L                                                                       L                                                                       P                                                                     ~       ████ ██████           █████      ██                     z      ███████████             █████                             �\1      █████████ ███████████████████ ███   ███████████   �\1     █████████  ███    █████████████ █████ ██████████████   �\1    █████████ ██████████ █████████ █████ █████ ████ █████   �\1  ███████████ ███    ███ █████████ █████ █████ ████ █████  �\1 ██████  █████████████████████ ████ █████ █████ ████ ██████ L                                                                       L                                                                       L                                                                       \1\0\2\ntheme\nhyper\vconfig\0\nsetup\14dashboard\frequire\0" },
+    config = { "\27LJ\2\n�\17\0\0\6\0\14\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0034\4\6\0005\5\a\0>\5\1\0045\5\b\0>\5\2\0045\5\t\0>\5\3\0045\5\n\0>\5\4\0045\5\v\0>\5\5\4=\4\f\3=\3\r\2B\0\2\1K\0\1\0\vconfig\rshortcut\1\0\4\bkey\6q\ngroup\nError\vaction\aqa\tdesc\14󱎘 Quit\1\0\4\bkey\6g\ngroup\vString\vaction\24Telescope live_grep\tdesc\19󱎸 Find Text\1\0\5\bkey\6f\ngroup\vString\vaction\25Telescope find_files\ticon\t \tdesc\nFiles\1\0\4\bkey\6n\ngroup\nLabel\vaction\tenew\tdesc\18󰈔 New File\1\0\4\bkey\6u\ngroup\15Identifier\vaction,Telescope find_files cwd=~/.config/nvim\tdesc\16󰊳 Update\vheader\1\0\2\vheader\0\rshortcut\0\1\16\0\0L                                                                       L                                                                       L                                                                       L                                                                       P                                                                     ~       ████ ██████           █████      ██                     z      ███████████             █████                             �\1      █████████ ███████████████████ ███   ███████████   �\1     █████████  ███    █████████████ █████ ██████████████   �\1    █████████ ██████████ █████████ █████ █████ ████ █████   �\1  ███████████ ███    ███ █████████ █████ █████ ████ █████  �\1 ██████  █████████████████████ ████ █████ █████ ████ ██████ L                                                                       L                                                                       L                                                                       \1\0\2\ntheme\nhyper\vconfig\0\nsetup\14dashboard\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
     path = "/home/bobbi/.local/share/nvim/site/pack/packer/opt/dashboard-nvim",
     url = "https://github.com/nvimdev/dashboard-nvim"
-  },
-  ["gruvbox.nvim"] = {
-    loaded = true,
-    path = "/home/bobbi/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
-    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   harpoon = {
     loaded = true,
@@ -167,6 +162,12 @@ _G.packer_plugins = {
     path = "/home/bobbi/.local/share/nvim/site/pack/packer/start/ripgrep",
     url = "https://github.com/BurntSushi/ripgrep"
   },
+  ["rose-pine"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0" },
+    loaded = true,
+    path = "/home/bobbi/.local/share/nvim/site/pack/packer/start/rose-pine",
+    url = "https://github.com/rose-pine/neovim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/bobbi/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -190,6 +191,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: rose-pine
+time([[Config for rose-pine]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
+time([[Config for rose-pine]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
