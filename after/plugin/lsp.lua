@@ -85,8 +85,8 @@ require('lspconfig').csharp_ls.setup{
 }
 require('lspconfig').intelephense.setup({
     root_dir = function ()
-                return vim.loop.cwd()
-            end,
+        return vim.loop.cwd()
+    end,
 })
 
 vim.diagnostic.config({
