@@ -74,6 +74,22 @@ return {
                 end,
             }
         })
+        require("lspconfig").intelephense.setup({
+            on_attach = function(client, bufnr)
+                -- Attach keybindings, diagnostics, etc.
+                vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+                vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
+            end,
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            settings = {
+                intelephense = {
+                    files = {
+                        maxSize = 1000000, -- Adjust as needed
+                    },
+                },
+            },
+            root_dir = require("lspconfig.util").root_pattern(".git", "composer.json", "index.php"),
+        })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
