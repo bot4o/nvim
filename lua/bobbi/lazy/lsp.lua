@@ -32,8 +32,6 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                -- "rust_analyzer",
-                -- "gopls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -74,24 +72,7 @@ return {
                 end,
             }
         })
-        -- ~/.config/nvim/init.lua or plugins/lsp.lua
-        require("lspconfig").intelephense.setup({
-            on_attach = function(client, bufnr)
-            end,
-            capabilities = require("cmp_nvim_lsp").default_capabilities(),
-            root_dir = require("lspconfig.util").root_pattern(".git", "composer.json", "index.php"),
-            settings = {
-                intelephense = {
-                    files = {
-                        maxSize = 1000000,
-                    },
-                    formatting = {
-                        -- Enable formatting and auto-indentation
-                        enable = true
-                    }
-                },
-            },
-        })
+
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
         cmp.setup({

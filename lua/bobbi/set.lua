@@ -40,7 +40,3 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "100"
 
 vim.opt.encoding = "utf-8"
-
--- Enable PHP filetype indenting
-vim.cmd([[autocmd FileType php setlocal smartindent tabstop=4 shiftwidth=4 expandtab]])
-
