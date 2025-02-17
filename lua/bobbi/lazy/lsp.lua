@@ -22,18 +22,18 @@ return {
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
-        "force",
-        {},
-        vim.lsp.protocol.make_client_capabilities(),
-        cmp_lsp.default_capabilities())
+            "force",
+            {},
+            vim.lsp.protocol.make_client_capabilities(),
+            cmp_lsp.default_capabilities())
 
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "rust_analyzer",
-                "gopls",
+                -- "rust_analyzer",
+                -- "gopls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -74,15 +74,24 @@ return {
                 end,
             }
         })
-        require'lspconfig'.phpactor.setup{
-            on_attach = on_attach,
-            init_options = {
-                ["language_server_phpstan.enabled"] = false,
-                ["language_server_psalm.enabled"] = false,
-            }
-        }
-
-
+        -- ~/.config/nvim/init.lua or plugins/lsp.lua
+        require("lspconfig").intelephense.setup({
+            on_attach = function(client, bufnr)
+            end,
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            root_dir = require("lspconfig.util").root_pattern(".git", "composer.json", "index.php"),
+            settings = {
+                intelephense = {
+                    files = {
+                        maxSize = 1000000,
+                    },
+                    formatting = {
+                        -- Enable formatting and auto-indentation
+                        enable = true
+                    }
+                },
+            },
+        })
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
         cmp.setup({
