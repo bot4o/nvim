@@ -1,26 +1,17 @@
-<h1>Bobbi's nvim configurations</h1>
-<b>Prerequisite:</b> 
-<ul>
-    <li>
-        Install ripgrep on you system;
-    </li>
-</ul>
-<h2>How to run?</h2>
-<h3><i>Linux</i></h3>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxAMQwl_ns_bCO1ZBJCozsqb8Qf7cpu5hshA&s" style="width: 100px; height: auto;"alt="penguin">
-<ol>
-    <li>Install this <a href="https://github.com/bot4o/nvim">nvim</a> repo to you config location</li>
-    ```bash
-    git clone ~/.config
-    ```
-    <li>After you open the nvim cloned repo open the lua/bobbi/packer.lua file with <b>nvim</b>.</li>
-    <br>
-    <p>And run the following using command mode </p>
-    ```viml
-    :so
-    -- then
-    :PackerSync
-    ```
-</ol>
+# Bobbi's nvim configurations
 
+**Prerequisite:**
+- Install ripgrep on your system.
 
+---
+
+## How to run?
+
+### *Linux*
+
+![penguin](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxAMQwl_ns_bCO1ZBJCozsqb8Qf7cpu5hshA&s)
+
+1. Install this [nvim](https://github.com/bot4o/nvim) repo to your config location:
+   ```bash
+       git clone https://github.com/bot4o/nvim ~/.config/nvim
+   ```
