@@ -2,9 +2,6 @@
 <b>Prerequisite:</b> 
 <ul>
     <li>
-        Clone via the coresponding command for you operating system:<a href="https://github.com/wbthomason/packer.nvim">packer.nvim</a>;
-    </li>
-    <li>
         Install ripgrep on you system;
     </li>
 </ul>
