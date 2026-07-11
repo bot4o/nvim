@@ -36,7 +36,8 @@ return {
                 "ts_ls",
                 "clangd",
                 "cssls",
-                "emmet_language_server"
+                "emmet_language_server",
+                "sqls"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -83,7 +84,37 @@ return {
                         end,
                     })
                 end,
+                ["sqls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.sqls.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            sqls = {
+                                connections = {
+                                    {
+                                        driver = 'postgresql',
+                                        dataSourceName = 'host=127.0.0.1 port=5432 user=bobbi password=malko29zlo dbname=bobbidb sslmode=disable',
+                                    },
+                                },
+                            },
+                        },
+                    }
+                end,
+                ["ts_ls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.ts_ls.setup({
+                        capabilities = capabilities,
+                        on_attach = function(client, bufnr)
+                            -- This explicitly tells Neovim to use the LSP when you press `=`
+                            vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
+                            -- Optional: Add a manual format keymap just like your C# setup
+                            vim.keymap.set("n", "<leader>f", function()
+                                vim.lsp.buf.format()
+                            end, { buffer = bufnr, desc = "Format with ts_ls" })
+                        end,
+                    })
+                end,
             }
         })
 
