@@ -1,7 +1,7 @@
 # Bobbi's nvim configurations
 
 **Prerequisite:**
-- Install ripgrep and nodejs (for the LSPs) on your system;
+- Install ripgrep, nodejs, npm, golang, gcc/clang (for the LSPs) on your system;
 - Just to know how LazyVim works
 ## How to run?
 ### Linux
