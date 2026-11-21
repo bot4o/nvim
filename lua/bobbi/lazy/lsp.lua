@@ -32,7 +32,6 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "omnisharp",
                 "ts_ls",
                 "clangd",
                 "cssls",
@@ -59,30 +58,6 @@ return {
                             }
                         }
                     }
-                end,
-                ["omnisharp"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.omnisharp.setup({
-                        capabilities = capabilities,
-                        cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
-                        enable_roslyn_analyzers = true,
-                        organize_imports_on_format = true,
-                        enable_import_completion = true,
-                        on_attach = function(client, bufnr)
-                            -- Format on save
-                            vim.api.nvim_create_autocmd("BufWritePre", {
-                                buffer = bufnr,
-                                callback = function()
-                                    vim.lsp.buf.format({ async = false })
-                                end,
-                            })
-
-                            -- Manual format keymap
-                            vim.keymap.set("n", "<leader>f", function()
-                                vim.lsp.buf.format()
-                            end, { buffer = bufnr, desc = "Format with OmniSharp" })
-                        end,
-                    })
                 end,
                 ["sqls"] = function()
                     local lspconfig = require("lspconfig")

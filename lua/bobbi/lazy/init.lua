@@ -11,6 +11,5 @@ return {
 
     -- "theprimeagen/refactoring.nvim",
     -- 'jlcrochet/vim-razor',
-    -- 'Hoffs/omnisharp-extended-lsp.nvim',
     -- 'BurntSushi/ripgrep',
 }
