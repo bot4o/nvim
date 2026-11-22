@@ -1,11 +1,26 @@
 function ColorMyPencils(color)
-    color = color or "rose-pine"
+    color = color or "tokusa"
     vim.cmd.colorscheme(color)
 
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
+    local highlights = {
+        Normal       = { bg = "NONE" },
+        NormalFloat  = { bg = "NONE" },
+        LineNr       = { fg = "#007755", bg = "NONE" },
+        CursorLineNr = { fg = "#38ffb0", bg = "NONE", bold = true },
+        SignColumn   = { bg = "NONE" },
+        Visual       = { fg = "#38ffb0", bg = "#1B5A3F" },
+        StatusLine   = { fg = "#38ffb0", bg = "#081A12" },
+        StatusLineNC = { fg = "#38ffb0", bg = "#081A12" },
+        ColorColumn  = { bg = "#081A12" },
+        CursorLine   = { bg = "#103726" },
+    }
 
+    for group, settings in pairs(highlights) do
+        vim.api.nvim_set_hl(0, group, settings)
+    end
+end
+vim.opt.cursorline = true
+vim.opt.number = true
 return {
 
     {
@@ -19,6 +34,25 @@ return {
         config = function()
             ColorMyPencils()
         end
+    },
+    {
+        "oskarnurm/koda.nvim",
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
+        config = function()
+            -- require("koda").setup({ transparent = true })
+            vim.cmd("colorscheme koda")
+        end,
+    },
+    {
+        "aidyak/tokusa",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function(_, opts)
+            require("tokusa").setup(opts)
+            vim.cmd.colorscheme("tokusa")
+        end,
     },
     {
         "ellisonleao/gruvbox.nvim",
